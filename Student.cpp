@@ -10,15 +10,15 @@ using namespace std;
 class Student
 {
     public:
-        char name[20];
+        char name[50];
         int id;
         char address[50];
-        int kaksha;
+        char kaksha[50];
         void setdata()
         {
             cout<<"Enter Student Name :";
             cin.ignore();
-            cin.getline(name,20);
+            cin.getline(name,50);
             cout<<"Enter Student id :";
             cin>>id;
             cout<<"Enter Student Address :";
@@ -26,7 +26,7 @@ class Student
             cin.getline(address,50);
             cout<<"Enter Student Class :";
             cin.ignore();
-            cin>>kaksha;
+            cin.getline(kaksha,50);
             ofstream file;
             file.open("record",ios::app);
             file.write((char*)this,sizeof(*this));
@@ -92,12 +92,17 @@ class Student
                 if(num==id)
                 {
                     ++cont;
-                    cout<<"Name :";
-                    cin>>name;
-                    cout<<"Enter id :";
+                   cout<<"Enter Student Name :";
+                    cin.ignore();
+                    cin.getline(name,50);
+                    cout<<"Enter Student id :";
                     cin>>id;
-                    cout<<"Enter Address :";
-                    cin>>address;
+                    cout<<"Enter Student Address :";
+                    cin.ignore();
+                    cin.getline(address,50);
+                    cout<<"Enter Student Class :";
+                    cin.ignore();
+                    cin.getline(kaksha,50);
                 }
                 w.write((char*)this,sizeof(*this));
                 r.read((char*)this,sizeof(*this));
