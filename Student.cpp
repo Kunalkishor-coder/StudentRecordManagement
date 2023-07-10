@@ -127,18 +127,23 @@ class Student
             int i=0;
             ifstream f;
             f.open("record",ios::in);
-            f.read((char*)this,sizeof(*this));
-            while(!f.eof())
-            {
-                ++i;
-                cout<<id<<"\t"<<name<<"\t"<<address<<endl;
-                f.read((char*)this,sizeof(*this));
+            if(f){
+                    f.read((char*)this,sizeof(*this));
+                    while(!f.eof())
+                    {
+                        ++i;
+                        cout<<id<<"\t"<<name<<"\t"<<address<<endl;
+                        f.read((char*)this,sizeof(*this));
+                    }
+                    if(i==0)
+                    {
+                        cout<<"Sorry ! No Record Found";
+                    }
+                    f.close();
             }
-            if(i==0)
-            {
-                cout<<"Sorry ! No Record Found";
+            else{
+                cout<<"< empty record >"<<endl;
             }
-            f.close();
         }
 
         void deleteAll_record()
